@@ -29,7 +29,7 @@
   },
   "release": {
     "branches": [
-      "master"
+      "main"
     ]
   },
   "eslintConfig": {
