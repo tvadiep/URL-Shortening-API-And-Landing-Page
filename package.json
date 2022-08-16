@@ -27,6 +27,11 @@
     "eject": "react-scripts eject",
     "semantic-release": "semantic-release --branch main"
   },
+  "release": {
+    "branches": [
+      "master"
+    ]
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
