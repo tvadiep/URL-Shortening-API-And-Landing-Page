@@ -1,6 +1,6 @@
 {
   "name": "url-shortening-api",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.0",
@@ -24,7 +24,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "semantic-release": "semantic-release --branch main"
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +46,11 @@
     ]
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.25"
+    "@types/styled-components": "^5.1.25",
+    "semantic-release": "^19.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tvadiep/URL-Shortening.git"
   }
 }
