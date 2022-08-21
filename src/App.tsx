@@ -10,10 +10,11 @@ import {
 } from "recoil";
 
 function App() {
-  return;
-  <RecoilRoot>
-    <Container />
-  </RecoilRoot>;
+  return (
+    <RecoilRoot>
+      <Container />
+    </RecoilRoot>
+  );
 }
 
 export default App;

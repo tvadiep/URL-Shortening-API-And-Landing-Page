@@ -3,18 +3,19 @@ import { Contain, FormWrapper } from "./Container.style";
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 // import SendIcon from "@mui/material/Icon";
-import { StyleButton } from "./Container.style";
-import { useState } from "react";
-
 import InputForm from "../Components/InputForm";
+
+import { useRecoilValue } from "recoil";
+import { submitted } from "../shared/globalStates";
+
 export const Container = () => {
-  const [submitted, setSubmitted] = useState(false);
+  const isSubmitted = useRecoilValue(submitted);
   const toggle = (boolVal: Boolean) => !boolVal;
   return (
     <Contain>
       <FormWrapper>
         <InputForm />
-        {submitted && (
+        {isSubmitted && (
           <div style={{ display: "block" }}>
             This is your link: https://facebook.com/vandiepat
           </div>
