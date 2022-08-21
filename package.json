@@ -1,6 +1,6 @@
 {
   "name": "url-shortening-api",
-  "version": "0.0.0-development",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.0",
@@ -30,8 +30,16 @@
   },
   "release": {
     "branches": [
-      "main"
-    ]
+      "release"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ],
+    "preset": "angular"
   },
   "eslintConfig": {
     "extends": [
