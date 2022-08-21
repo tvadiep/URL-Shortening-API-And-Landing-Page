@@ -1,31 +1,25 @@
 import React from "react";
-import {
-  ButtonWrapper,
-  Contain,
-  FormWrapper,
-  InputForm,
-} from "./Container.style";
+import { Contain, FormWrapper } from "./Container.style";
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 // import SendIcon from "@mui/material/Icon";
-import { StyleButton } from "./Container.style";
+import InputForm from "../Components/InputForm";
+
+import { useRecoilValue } from "recoil";
+import { submitted } from "../shared/globalStates";
 
 export const Container = () => {
+  const isSubmitted = useRecoilValue(submitted);
+  const toggle = (boolVal: Boolean) => !boolVal;
   return (
     <Contain>
       <FormWrapper>
-        <InputForm>
-          <TextField fullWidth label="Enter your link" id="link" />
-          <ButtonWrapper>
-            <StyleButton
-              variant="contained"
-              disableElevation
-              onClick={() => console.log("Oh hi mark")}
-            >
-              Shorten It!
-            </StyleButton>
-          </ButtonWrapper>
-        </InputForm>
+        <InputForm />
+        {isSubmitted && (
+          <div style={{ display: "block" }}>
+            This is your link: https://facebook.com/vandiepat
+          </div>
+        )}
       </FormWrapper>
     </Contain>
   );
