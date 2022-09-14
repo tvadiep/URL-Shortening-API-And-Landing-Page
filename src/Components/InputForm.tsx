@@ -16,7 +16,7 @@ const InputForm = () => {
             disableElevation
             onClick={() => submittedToggle(true)}
           >
-            Shorten It!
+            Click it!
           </StyleButton>
           {/* <React.Suspense fallback={<div>Loading</div>}></React.Suspense> */}
         </ButtonWrapper>
