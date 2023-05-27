@@ -15,6 +15,6 @@ function App() {
       <Container />
     </RecoilRoot>
   );
-}
+};
 
 export default App;
