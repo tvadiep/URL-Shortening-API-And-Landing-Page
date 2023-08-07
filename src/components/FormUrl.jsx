@@ -5,7 +5,7 @@ import axios from "axios";
 
 // curl -X POST -H "Content-Type: application/json" https://7dvr3wyaudr3rrckvmlmz4jvpu0lzlhf.lambda-url.us-east-1.on.aws
 const lambdaURL =
-  "https://uhafutsz5hhvdpqsy3bubgt4cm0cybtj.lambda-url.us-east-1.on.aws/";
+  "https://w6urowyx72kvvywurdre5lz7ka0pzdlr.lambda-url.us-east-1.on.aws/";
 
 export const FormUrl = ({ setShortenURL }) => {
   const inputRef = useRef();
@@ -20,7 +20,7 @@ export const FormUrl = ({ setShortenURL }) => {
         },
       })
       .then((response) => {
-        console.log(response.data.originalUrl); // Accessing the original URL from the Lambda response
+        console.log(response.data); // Accessing the original URL from the Lambda response
         console.log(response.data.shortenedUrl); // Accessing the shortened URL from the Lambda response
         // Now you can use the data as needed
         setShortenURL(response.data.shortenedUrl);

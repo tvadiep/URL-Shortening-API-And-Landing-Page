@@ -1,3 +1,5 @@
+import AWS from "/var/runtime/node_modules/aws-sdk/lib/aws.js";
+
 function md5(inputString, length) {
   var hc = "0123456789abcdef";
   function rh(n) {
@@ -133,9 +135,30 @@ export const handler = async (event) => {
   const url = event.queryStringParameters.url; // Assuming the URL is passed as a query parameter
   const baseURL =
     "https://uhafutsz5hhvdpqsy3bubgt4cm0cybtj.lambda-url.us-east-1.on.aws/";
+  const shortenUrl = baseURL + md5(url, 8);
+
+  const dynamodb = new AWS.DynamoDB.DocumentClient();
+  // Search the url
+
+  const params = {
+    TableName: "url",
+    Item: {
+      originalURL: url,
+      shortenURL: shortenUrl,
+    },
+  };
+
+  try {
+    await dynamodb.put(params).promise(); // Use the put method from the global AWS SDK
+    console.log("Data written to DynamoDB:", params.Item);
+  } catch (error) {
+    console.error("Error writing to DynamoDB:", error);
+  }
+
   const responseData = {
+    message: "URL is written successfully!",
     originalUrl: url,
-    shortenedUrl: baseURL + md5(url, 8),
+    shortenedUrl: shortenUrl,
   };
 
   const response = {
