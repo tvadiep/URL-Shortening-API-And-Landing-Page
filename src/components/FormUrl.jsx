@@ -1,25 +1,30 @@
 import React, { useRef } from "react";
 import { Box, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
+import axios from "axios";
 
 // curl -X POST -H "Content-Type: application/json" https://7dvr3wyaudr3rrckvmlmz4jvpu0lzlhf.lambda-url.us-east-1.on.aws
 const lambdaURL =
-  "https://7dvr3wyaudr3rrckvmlmz4jvpu0lzlhf.lambda-url.us-east-1.on.aws/";
-export const FormUrl = () => {
+  "https://uhafutsz5hhvdpqsy3bubgt4cm0cybtj.lambda-url.us-east-1.on.aws/";
+
+export const FormUrl = ({ setShortenURL }) => {
   const inputRef = useRef();
   const handleSumbit = async (event) => {
     event.preventDefault();
     const formData = { url: inputRef.current.value };
 
-    fetch(lambdaURL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((responseData) => console.log(responseData));
+    axios
+      .get(lambdaURL, {
+        params: {
+          url: formData.url,
+        },
+      })
+      .then((response) => {
+        console.log(response.data.originalUrl); // Accessing the original URL from the Lambda response
+        console.log(response.data.shortenedUrl); // Accessing the shortened URL from the Lambda response
+        // Now you can use the data as needed
+        setShortenURL(response.data.shortenedUrl);
+      });
   };
 
   return (

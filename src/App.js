@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import "./App.css";
 import { Box, Typography } from "@mui/material";
 // import InputBase from "@mui/material/InputBase";
@@ -6,6 +6,7 @@ import { Box, Typography } from "@mui/material";
 import { FormUrl } from "./components/FormUrl";
 
 function App() {
+  const [shortenURL, setShortenURL] = useState();
   return (
     <Box
       sx={{
@@ -44,7 +45,7 @@ function App() {
               width: "80%",
             }}
           >
-            <FormUrl />
+            <FormUrl setShortenURL={setShortenURL} />
           </Box>
           <Box sx={{ m: "20px 0px", width: "80%" }}>
             <Typography variant="h6">
@@ -53,6 +54,14 @@ function App() {
               share
             </Typography>
           </Box>
+          {shortenURL && typeof (shortenURL !== "Objects") && (
+            <Box sx={{ m: "20px 0px", width: "80%" }}>
+              <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                Your shorten url is:{" "}
+              </Typography>
+              <Typography variant="h6">{shortenURL}</Typography>
+            </Box>
+          )}
         </Box>
       </Box>
     </Box>
